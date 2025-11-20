@@ -324,17 +324,42 @@ class _RecorderPageState extends State<RecorderPage> {
                           borderRadius: BorderRadius.circular(8),
                           child: Container(
                             color: isDark ? Colors.grey[900] : Colors.grey[200],
-                            child:
-                                _cameraController?.value.isInitialized ?? false
-                                    ? CameraPreview(_cameraController!)
-                                    : const Center(
-                                        child: Text(
-                                          'Klik "Mulai Rekam" untuk merekam video\natau "Upload Berkas" untuk mengunggah file',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.grey, fontSize: 12),
-                                        ),
+                            child: _cameraController?.value.isInitialized ?? false
+                                ? CameraPreview(_cameraController!)
+                                : Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.videocam_off_outlined,
+                                            size: 64,
+                                            color: isDark ? Colors.grey[500] : Colors.grey[400],
+                                          ),
+                                          const SizedBox(height: 18),
+                                          Text(
+                                            'Klik "Mulai Rekam" untuk merekam video atau "Upload Berkas" untuk mengunggah file video/gambar',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: isDark ? Colors.grey[300] : Colors.grey[700],
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            'Format didukung: MP4, MOV, MKV, WebM, AVI, PNG, JPG',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: isDark ? Colors.grey[400] : Colors.grey[500],
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
                                       ),
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
@@ -734,7 +759,7 @@ class _RecorderPageState extends State<RecorderPage> {
                   ),
                 ),
               ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 24),
                       const Footer(),
                     ],
                   ), // Column

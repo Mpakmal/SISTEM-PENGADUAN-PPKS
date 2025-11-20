@@ -5,6 +5,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onToggleTheme;
   final VoidCallback onLogin;
   final VoidCallback onRecorder;
+  final VoidCallback? onHome;
   final bool isAdmin;
   final VoidCallback? onLogout;
 
@@ -14,6 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.onToggleTheme,
     required this.onLogin,
     required this.onRecorder,
+    this.onHome,
     this.isAdmin = false,
     this.onLogout,
   });
@@ -69,7 +71,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           // 🔹 Navigasi (Home, Recorder)
           if (!isAdmin) ...[
             TextButton(
-              onPressed: () => Navigator.pushNamed(context, '/home'),
+              onPressed: onHome ?? () => Navigator.pushNamed(context, '/home'),
               child: Text("Home", style: TextStyle(color: textColor)),
             ),
             TextButton(

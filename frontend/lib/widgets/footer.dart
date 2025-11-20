@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({super.key});
+  final double maxWidth;
+
+  const Footer({super.key, this.maxWidth = 1100});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class Footer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1280),
+          constraints: BoxConstraints(maxWidth: maxWidth),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

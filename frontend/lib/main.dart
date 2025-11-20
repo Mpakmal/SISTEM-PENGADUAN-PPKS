@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'theme/app_theme.dart';
 import 'widgets/custom_app_bar.dart';
 import 'widgets/app_state_scope.dart';
@@ -8,6 +9,13 @@ import 'pages/login_page.dart';
 import 'pages/dashboard_page.dart';
 
 void main() {
+  // Use path URL strategy on web to remove the '#' from routes (e.g. '/home' instead of '/#/home')
+  try {
+    setPathUrlStrategy();
+  } catch (_) {
+    // If not running on web or url_strategy not available, ignore.
+  }
+
   runApp(const MyApp());
 }
 
